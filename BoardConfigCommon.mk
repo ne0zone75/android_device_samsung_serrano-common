@@ -34,11 +34,10 @@ BOARD_KERNEL_BASE := 0x80200000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 BOARD_KERNEL_PAGESIZE := 2048
 TARGET_KERNEL_SOURCE := kernel/samsung/msm8930-common
-ifneq ($(filter serranoltespr serranolteusc,$(TARGET_DEVICE)),)
-TARGET_KERNEL_CONFIG := samsung_serrano_usa_defconfig
-else
 TARGET_KERNEL_CONFIG := samsung_serrano_defconfig
-endif
+
+# Ramdisk
+LZMA_RAMDISK_TARGETS := boot,recovery
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
@@ -89,3 +88,31 @@ BOARD_USES_QC_TIME_SERVICES := true
 
 # CMHW
 BOARD_HARDWARE_CLASS += device/samsung/serrano-common/cmhw
+
+RECOVERY_VARIANT := twrp
+
+# TWRP
+TW_HAS_DOWNLOAD_MODE := true
+TW_NO_REBOOT_BOOTLOADER := true
+TW_NO_USB_STORAGE := true
+
+DEVICE_RESOLUTION := 540x960
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
+TW_MAX_BRIGHTNESS := 255
+
+RECOVERY_SDCARD_ON_DATA := true
+BOARD_HAS_NO_REAL_SDCARD := true
+
+TW_INTERNAL_STORAGE_PATH := "/data/media/0"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
+TW_EXTERNAL_STORAGE_PATH := "/external_sd"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
+
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_CRYPTO_SAMSUNG := false
+
+TW_INCLUDE_FUSE_EXFAT := true
+TW_INCLUDE_FUSE_NTFS := true
+
+TW_EXTRA_LANGUAGES := false

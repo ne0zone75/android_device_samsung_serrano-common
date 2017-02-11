@@ -1,4 +1,3 @@
-# Copyright (C) 2013-2016, The CyanogenMod Project
 # Copyright (C) 2017, The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,14 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# NFC access control + feature files + configuration
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
-    $(LOCAL_PATH)/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf
-
-# NFC packages
-PRODUCT_PACKAGES += \
-    nfc_nci.bcm2079x.default \
-    NfcNci \
-    Tag
+BOARD_HAS_NO_REAL_SDCARD := true
+LZMA_RAMDISK_TARGETS := recovery
+RECOVERY_SDCARD_ON_DATA := true
+RECOVERY_VARIANT := twrp
+TARGET_RECOVERY_FSTAB := device/samsung/serrano-common/rootdir/twrp.fstab
+TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
+TW_HAS_DOWNLOAD_MODE := true
+TW_INCLUDE_CRYPTO := true
+TW_NO_REBOOT_BOOTLOADER := true
+TW_TARGET_USES_QCOM_BSP := true

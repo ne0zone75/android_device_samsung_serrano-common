@@ -1,4 +1,5 @@
-# Copyright (C) 2013 The CyanogenMod Project
+# Copyright (C) 2013-2016, The CyanogenMod Project
+# Copyright (C) 2017, The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -65,6 +66,7 @@ USE_CUSTOM_AUDIO_POLICY := 1
 
 # FM
 AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
+BOARD_HAVE_QCOM_FM := true
 TARGET_FM_LEGACY_PATCHLOADER := true
 
 # Allow suspend in charge mode
@@ -115,4 +117,6 @@ TW_INCLUDE_CRYPTO_SAMSUNG := false
 TW_INCLUDE_FUSE_EXFAT := true
 TW_INCLUDE_FUSE_NTFS := true
 
-TW_EXTRA_LANGUAGES := false
+TW_EXTRA_LANGUAGES := true
+
+-include device/samsung/serrano-common/twrp.mk
